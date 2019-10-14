@@ -22,11 +22,11 @@ const Login = ({ history }) => {
   return (
     <>
       <p>
-        Offer <strong>spots</strong> to software developers and find <strong>talents</strong> for your company
+        Offer <strong>open rooms</strong> to software developers and find <strong>talents</strong> for your company
       </p>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">E-mail*:</label>
+        <label htmlFor="email">E-mail:</label>
         <input 
           type="email" 
           id="email" 

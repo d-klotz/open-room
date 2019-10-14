@@ -24,7 +24,7 @@ body, input, button {
 
 .container {
   margin: 80px auto 0;
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -55,6 +55,12 @@ body, input, button {
   color: #444;
   font-weight: bold;
   margin-bottom: 8px;
+}
+
+.content form label span {
+  font-weight: normal;
+  color: #999;
+  font-size: 12px;
 }
 
 .content form input {
