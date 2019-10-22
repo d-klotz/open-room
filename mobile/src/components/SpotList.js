@@ -14,8 +14,8 @@ const SpotList = ({ tech, navigation }) => {
       });
 
       setSpots(response.data);
-    }
-
+    };
+    
     loadSpots();
   }, []);
 
@@ -30,19 +30,20 @@ const SpotList = ({ tech, navigation }) => {
       <FlatList 
         style={styles.list}
         data={spots}
-        keyExtractor={item => spots._id}
+        keyExtractor={spot => spot._id}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={styles.listItem}>
             <Image 
-              source={{ uri: item.thumbnail_url }}
               style={styles.thumbnail}
+              source={{ uri: item.thumbnail_url }}
             />
             <Text style={styles.company}>{item.company}</Text>
             <Text style={styles.price}>{item.price ? `$${item.price}/day` : 'Free'}</Text>
-            <TouchableOpacity style={styles.buttom} onPress={() => handleNavigation(item._id)}>
-              <Text>Book it now</Text>
+
+            <TouchableOpacity style={styles.button} onPress={() => handleNavigation(item._id)}>
+              <Text style={styles.buttonText}>Book it now</Text>
             </TouchableOpacity>
           </View>
         )}

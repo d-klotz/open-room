@@ -5,28 +5,26 @@ import api from '../services/api';
 import Logo from '../assets/logo.png';
 
 const Login = ({ navigation }) => {
-
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
   useEffect(() => {
+    AsyncStorage.clear();
     AsyncStorage.getItem('user').then(user => {
       AsyncStorage.getItem('techs').then(storagedTech => {
         if (user && storagedTech) {
           navigation.navigate('List');
         }
       });
-    })
+    });
   }, []);
 
   const handleSubmit = async () => {
     const response = await api.post('/sessions', {
       email
-    })
+    });
 
     const { _id } = response.data;
-
-    console.log(response.data);
 
     await AsyncStorage.setItem('user', _id);
     await AsyncStorage.setItem('techs', techs);

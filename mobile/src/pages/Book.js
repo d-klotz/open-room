@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { SafeAreaView, AsyncStorage, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { SafeAreaView, AsyncStorage, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 
 import api from '../services/api';
 
 const Book = ({ navigation }) => {
-
   const [date, setDate] = useState('');
-
   const id = navigation.getParam('id');
 
   const handleSubmit = async () => {
@@ -17,7 +15,7 @@ const Book = ({ navigation }) => {
       }
     });
 
-    Alert.alert('Your booking request was send');
+    Alert.alert('Your booking request has been sent.');
     navigation.navigate('List');
   }
 
@@ -37,14 +35,14 @@ const Book = ({ navigation }) => {
         value={date}
         onChangeText={setDate}
         />
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Book this place</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.button, styles.cancelButton]} onPress={handleCancel}>
         <Text style={styles.buttonText}>Cancel</Text>
-      </TouchableOpacity>
-      
+      </TouchableOpacity>      
     </SafeAreaView>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, Image, AsyncStorage, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, Image, AsyncStorage, StyleSheet, Platform } from 'react-native';
 
 import SpotList from '../components/SpotList';
 import Logo from '../assets/logo.png';
@@ -32,7 +32,8 @@ const List = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 25 : 0
   },
   logo: {
     height: 32,
