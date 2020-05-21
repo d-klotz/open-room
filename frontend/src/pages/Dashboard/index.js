@@ -29,9 +29,21 @@ const Dashboard = () => {
         headers: { user_id }
       });
       setRooms(response.data);
-    }
+    };
     loadRooms();
   }, []);
+
+  const handleAccept = async (bookingId) => {
+    await api.post(`/bookings/${bookingId}/approvals`);
+
+    setRequests(requests.filter(request => request._id !== bookingId));
+  }
+
+  const handleReject = async (bookingId) => {
+    await api.post(`/bookings/${bookingId}/approvals`);
+
+    setRequests(requests.filter(request => request._id !== bookingId));
+  }
 
   return (
    <>
@@ -39,12 +51,11 @@ const Dashboard = () => {
       {requests.map(request => (
         <li key={request._id}>
           <p>
-            <strong>{request.user.email}</strong> is 
-            requesting a spot at <strong>{request.spot.company}</strong> 
-            on <strong>{request.date}</strong>. 
+            <strong>{request.user.email}</strong> is
+            requesting a spot at <strong>{request.spot.company}</strong> on <strong>{request.date}</strong>.
           </p>
-          <button className="accept">Accept</button>
-          <button className="decline">Decline</button>
+          <button className="accept" onClick={() => handleAccept(request._id)}>Accept</button>
+          <button className="decline" onClick={() => handleReject(request._id)}>Decline</button>
         </li>
       ))}
     </ul>
@@ -64,6 +75,6 @@ const Dashboard = () => {
     </Link>
    </>
   )
-}
+};
 
 export default Dashboard;

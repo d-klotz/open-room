@@ -42,6 +42,7 @@ ul.notifications li {
 
 ul.notifications li button {
   margin-right: 10px;
+  background-color: transparent;
   border: 0;
   font-weight: bold;
   margin-top: 10px;

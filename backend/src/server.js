@@ -4,11 +4,18 @@ const cors = require('cors');
 const path = require('path');
 const socketio = require('socket.io');
 const http = require('http');
+const fs = require('fs');
 
 const routes = require('./routes');
 
+// This line is from the Node.js HTTPS documentation.
+const options = {
+  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.cert')
+};
+
 const app = express();
-const server = http.Server(app);
+const server = https.createServer(options, app).listen(443);
 const io = socketio(server);
 
 mongoose.connect('mongodb+srv://openroom:openroom@open-room-4n209.mongodb.net/openroom?retryWrites=true&w=majority', {
