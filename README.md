@@ -1,5 +1,5 @@
 <p align="center">
-<img src="mobile/src/assets/logo@2x.png" />
+<img src="mobile/src/assets/logo@3x.png" />
 </p>
 
 # Aircnc - Air Code and Coffe | Rent coworking spaces for developers <br/>
